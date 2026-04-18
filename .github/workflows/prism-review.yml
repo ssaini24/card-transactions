@@ -1,0 +1,15 @@
+name: Prism Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  review:
+    uses: ssaini24/prism/.github/workflows/review.yml@main
+    with:
+      llm_provider: "claude-code"
+      enable_static_analysis: false
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CLAUDE_CREDENTIALS: ${{ secrets.CLAUDE_CREDENTIALS }}
