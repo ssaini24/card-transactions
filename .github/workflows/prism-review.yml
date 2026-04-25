@@ -2,10 +2,11 @@ name: Prism Code Review
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [labeled]
 
 jobs:
   review:
+    if: github.event.label.name == 'prism-review'
     uses: ssaini24/prism/.github/workflows/review.yml@main
     with:
       llm_provider: "claude-code"
